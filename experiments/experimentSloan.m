@@ -41,9 +41,9 @@ figure
 XPCA=score(:,1:4);
 plot(XPCA(:,1),XPCA(:,2),'.r');
 
-save sloanCompletePca.mat
+save output/sloanCompletePca.mat
 
-load sloanCompletePca
+load output/sloanCompletePca
 %free memory
 %-------------
 clear X;
