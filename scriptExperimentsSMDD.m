@@ -1,9 +1,14 @@
 %% EXPERIMENTS GMM DATA SET 
 % Requiered: CVX toolbox from http://cvxr.com/cvx/
-run   /home/jorjasso/cvx/cvx_startup.m
+run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
 %run /home/jorjasso/Downloads/cvx/cvx_startup.m
 % Requiered:  MONQP  from http://asi.insa-rouen.fr/enseignants/~arakoto/toolbox/
 addpath ./SVM-KM/
+addpath ./datasets/
+addpath ./experiments/
+addpath ./models/
+addpath ./kernels/
+
 
 
 %Distribution-based group anomaly detection
@@ -20,7 +25,7 @@ experimentGroupAnomalyDetectionGMM(1,nRuns)
 %Distribution-based group anomaly detection (Another)
 %------------
 
-experimentGroupAnomalyDetectionGMM(2,nRuns) 
+experimentGroupAnomalyDetectionGMM(1,nRuns) 
 
 %% EXPERIMENTS SLOAN DATA SET
 
