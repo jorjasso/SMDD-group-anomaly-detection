@@ -32,3 +32,10 @@ experimentsGADGMM(5,percentAnomalies,N)
 
 experimentSloan(0,nRuns)
 experimentSloan(1,nRuns)
+
+%% EXPERIMENTS USING SCREEN
+screen  -d -m matlab -nodisplay -nosplash -r  "experimentsGADGMM(1,10,300)"
+screen  -d -m matlab -nodisplay -nosplash -r  "experimentsGADGMM(2,10,300)"
+screen  -d -m matlab -nodisplay -nosplash -r  "experimentsGADGMM(3,10,300)"
+screen  -d -m matlab -nodisplay -nosplash -r  "experimentsGADGMM(4,10,300)"
+screen  -d -m matlab -nodisplay -nosplash -r  "experimentsGADGMM(5,10,300)"
