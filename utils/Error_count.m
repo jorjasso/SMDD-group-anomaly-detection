@@ -42,12 +42,12 @@ for i = 1:length(th_vals)
     spec(i) = TN/(TN+FP);
 end
 %ROC curve
-figure(1);hold off
+%figure(1);hold off
 cspec = 1-spec; %FPR
 cspec = cspec(end:-1:1);
 sens = sens(end:-1:1);
-plot(cspec,sens,'k')
-title('ROC curve')
+%plot(cspec,sens,'k')
+%title('ROC curve')
 AUC = sum(0.5*(sens(2:end)+sens(1:end-1)).*(cspec(2:end) - cspec(1:end-1)));
 
 %[X,Y,T,AUC] = perfcurve(yt,predict_label,1)
