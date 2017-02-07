@@ -96,7 +96,7 @@ statistics = cell(CVP_outer.NumTestSets,16);% nroDatasets x nroModels to save th
 
 %outer loop
 for cv=1:CVP_outer.NumTestSets
-   
+ 
     %training and test sets
     index=CVP_outer.training(cv)
     training=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ]
