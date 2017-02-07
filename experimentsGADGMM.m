@@ -96,7 +96,7 @@ statistics = cell(CVP_outer.NumTestSets,16);% nroDatasets x nroModels to save th
 
 %outer loop
 for cv=1:CVP_outer.NumTestSets
-    cv
+   
     %training and test sets
     index=CVP_outer.training(cv)
     training=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ]
@@ -120,7 +120,7 @@ for cv=1:CVP_outer.NumTestSets
     
     
     for ModelOp=[1:16] %for SMDDCCP (1), SMDDDA(2) SMDDDASN(3) OCSMM(4) SVDD(5);SMDDCCP (6-10) with k=0.90, .92, .94, .96, .98
-        ModelOp
+        [cv ModelOp]
         %model selection with grid search
         [bestC,bestGamma, ~]=gridSearch(CVP_inner, training,ModelOp, grid_C, grid_gamma,3); %inner_loop for model selection
        
