@@ -108,8 +108,6 @@ for cv=1:CVP_outer.NumTestSets
     
     yTest=test{4};
 
-    
-    
     %split the training set in training and validation sets
     CVP_inner=cvpartition(yT,'k',kFold);%
     
