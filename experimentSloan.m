@@ -45,19 +45,19 @@ kappa=ones(length(y),1);
 
 %index: selection nNonanomalies groups from nonAnomalous dataset and nAnomalies
 %groups from anomalous dataset
-index=randperm(N,nNonAnomalies)
-NA={nonAnomalous{1}(index),nonAnomalous{2}(index,:),nonAnomalous{3}(index)}
-index=randperm(N,nAnomalies)
-A={anomalous{1}(index),anomalous{2}(index,:),anomalous{3}(index)}
+index=randperm(N,nNonAnomalies);
+NA={nonAnomalous{1}(index),nonAnomalous{2}(index,:),nonAnomalous{3}(index)};
+index=randperm(N,nAnomalies);
+A={anomalous{1}(index),anomalous{2}(index,:),anomalous{3}(index)};
 
 %Combined dataset
-tempData=[NA; A ]
+tempData=[NA; A ];
 
-dataset{1}=[tempData{1,1} tempData{2,1}]  %groups
-dataset{2}=[tempData{1,2} ;tempData{2,2}] %means
-dataset{3}=[tempData{1,3} tempData{2,3}]  %coovariance matrices
-dataset{4}=y                              %classes
-dataset{5}=kappa                          %kappa values
+dataset{1}=[tempData{1,1} tempData{2,1}];  %groups
+dataset{2}=[tempData{1,2} ;tempData{2,2}]; %means
+dataset{3}=[tempData{1,3} tempData{2,3}];  %coovariance matrices
+dataset{4}=y;                           %classes
+dataset{5}=kappa;                         %kappa values
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %Nested cross validation
@@ -70,23 +70,23 @@ statistics = cell(CVP_outer.NumTestSets,16);% nroDatasets x nroModels to save th
 for cv=1:CVP_outer.NumTestSets
  
     %training and test sets
-    index=CVP_outer.training(cv)
-    training=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ]
+    index=CVP_outer.training(cv);
+    training=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ];
     yT=training{4};
     kappa=training{5};
     
-    index=CVP_outer.test(cv)
-    test=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ]
+    index=CVP_outer.test(cv);
+    test=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ];
     
     yTest=test{4};
 
     %split the training set in training and validation sets
     CVP_inner=cvpartition(yT,'k',kFold);%
     
-    [Q1,Q3,Q5,Q7,Q9]=findLambda(training{1})
-    NN=length(training{1})
-    grid_gamma=[1/Q1,1/Q3,1/Q5,1/Q7,1/Q9 ]
-    grid_C=[1 1./(NN*[0.1:0.05:0.2])] %no fraction of oultiers, 10% 15% and 20% of outliers
+    [Q1,Q3,Q5,Q7,Q9]=findLambda(training{1});
+    NN=length(training{1});
+    grid_gamma=[1/Q1,1/Q3,1/Q5,1/Q7,1/Q9 ];
+    grid_C=[1 1./(NN*[0.1:0.05:0.2])]; %no fraction of oultiers, 10% 15% and 20% of outliers
     
     
     for ModelOp=[1:16] %for SMDDCCP (1), SMDDDA(2) SMDDDASN(3) OCSMM(4) SVDD(5);SMDDCCP (6-10) with k=0.90, .92, .94, .96, .98
