@@ -1,14 +1,5 @@
-function experimentsGADGMM(option,percentAnomalies,N)
-%This function reproduce the experiments for the point-based group anomaly
-%detection.
-%option is a value in {1,2,3} depending on the type of anomalies.
-%If option=4 then the anomalous groups are formed by combinig one third of
-%each type {1,2,3} into one group. If option =5 the experiments the
-%anomalies are distibution-based
-%
-%N is the size of the dataset.  (number of groups)
-%
-%percentAnomalies is the percent of anomalies %N
+function experimentSloan(option)
+% Experiments for the Sloan sky survey dataset (SDSS)
 %run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
 run   /home/jorjasso/cvx/cvx_startup.m
 addpath ./SVM-KM/
@@ -18,50 +9,35 @@ addpath ./models/
 addpath ./kernels/
 addpath ./utils/
 
+%arguments
+option=3
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 %EXPERIMENT DESCRIPTION
 %%%%%%%%%%%%%%%%%%%%%%%%
-kFold=10;
+N=505
+kFold=5;
 kernelOp=3
-OpPrint=0
 %%%%%%%%%%%%%%%%%%%%%%%%
 %DATA
 %%%%%%%%%%%%%%%%%%%%%%%%
 switch option
     case 1 % point-based group anomalies first type
-        type='PointBasedGroupAnomalies';
-        [nonAnomalous, anomalous,~,~]=getPointBasedGroupAnomalies(N,OpPrint);
+        type='SloanRandomFirstTypeAnomalies';
+        [nonAnomalous, anomalous,~,~] = getAnomaliesSloan(N);
     case 2 % point-based group anomalies second type
-        type='PointBasedGroupAnomalies';
-        [nonAnomalous, ~,anomalous,~]=getPointBasedGroupAnomalies(N,OpPrint);
+        type='SloanSecondTypeAnomalies';
+        [nonAnomalous, ~,anomalous,~] = getAnomaliesSloan(N);
     case 3 % point-based group anomalies third type
-        type='PointBasedGroupAnomalies';
-        [nonAnomalous, ~,~,anomalous]=getPointBasedGroupAnomalies(N,OpPrint);
-    case 4 % point-based group anomalies combined
-        type='PointBasedGroupAnomalies';
-        [nonAnomalous, A1,A2,A3]=getPointBasedGroupAnomalies(2*N,OpPrint);
-        %the nonanomaous groups are formed by combining 1/3 o groups of
-        %each A1, A2 and A3
-        index=randperm(2*N,floor(2*N/3));
-        T1={A1{1}(index),A1{2}(index,:),A1{3}(index)}
-        T2={A2{1}(index),A2{2}(index,:),A2{3}(index)}
-        T3={A3{1}(index),A3{2}(index,:),A3{3}(index)}
-        T=[T1;T2;T3]
-        anomalous{1}=[T{1,1} T{2,1} T{3,1}]
-        anomalous{2}=[T{1,2}; T{2,2}; T{3,2}]
-        anomalous{3}=[T{1,3} T{2,3} T{3,3}]
-        
-    case 5 % distribution based
-        type='DistributionBasedGroupAnomalies';
-        [nonAnomalous, anomalous]=getDistributionBasedData(N,OpPrint)
-        
+        type='SloanThirdTypeAnomalies';
+        [nonAnomalous, ~,~,anomalous] = getAnomaliesSloan(N);
     otherwise
         disp('no valid option')
 end
 
 %percent anomalies
-nAnomalies=floor(percentAnomalies/100*N);
-nNonAnomalies=N-nAnomalies;
+nAnomalies=50;
+nNonAnomalies=N;
 
 %clases
 y=[ones(nNonAnomalies,1);-ones(nAnomalies,1)];
