@@ -9,9 +9,6 @@ addpath ./models/
 addpath ./kernels/
 addpath ./utils/
 
-%arguments
-option=3
-
 %%%%%%%%%%%%%%%%%%%%%%%%
 %EXPERIMENT DESCRIPTION
 %%%%%%%%%%%%%%%%%%%%%%%%
