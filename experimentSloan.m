@@ -88,8 +88,8 @@ for cv=1:CVP_outer.NumTestSets
     grid_gamma=[1/Q1,1/Q3,1/Q5,1/Q7,1/Q9 ];
     grid_C=[1 1./(NN*[0.1:0.05:0.2])]; %no fraction of oultiers, 10% 15% and 20% of outliers
     
-    
-    for ModelOp=[1:16] %for SMDDCCP (1), SMDDDA(2) SMDDDASN(3) OCSMM(4) SVDD(5);SMDDCCP (6-10) with k=0.90, .92, .94, .96, .98
+    for ModelOp=[1,6:16]
+   % for ModelOp=[1:16] %for SMDDCCP (1), SMDDDA(2) SMDDDASN(3) OCSMM(4) SVDD(5);SMDDCCP (6-10) with k=0.90, .92, .94, .96, .98
         [cv ModelOp]
         %model selection with grid search
         [bestC,bestGamma, ~]=gridSearch(CVP_inner, training,ModelOp, grid_C, grid_gamma,3); %inner_loop for model selection

@@ -48,7 +48,7 @@ for gamma=grid_gamma
             %predict
             
             ypred=prediction_MONQP(kernelMatrices, X, Z,C,kappa,kernelOp,ModelOp);
-            %[ypred,yV]
+           
             [~, ~,~,~,AUC,~]=Error_count(yV,ypred);
             
             history_AUC(k)=AUC;

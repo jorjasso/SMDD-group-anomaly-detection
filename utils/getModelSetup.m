@@ -12,10 +12,10 @@ if (ModelOp==1||ModelOp==2||ModelOp==4||ModelOp==6||ModelOp==7||ModelOp==8||Mode
     kernelMatrices={Krr,Kre,Kee,K_traceTraining,K_traceTest};
     if (ModelOp==1)   kappa=ones(length(kappa),1); end
     if (ModelOp==6)   kappa=0.9*ones(length(kappa),1); end
-    if (ModelOp==7)   kappa=0.92*ones(length(kappa),1); end
-    if (ModelOp==8)   kappa=0.94*ones(length(kappa),1); end
-    if (ModelOp==9)   kappa=0.96*ones(length(kappa),1); end
-    if (ModelOp==10)  kappa=0.98*ones(length(kappa),1); end
+    if (ModelOp==7)   kappa=0.8*ones(length(kappa),1); end
+    if (ModelOp==8)   kappa=0.7*ones(length(kappa),1); end
+    if (ModelOp==9)   kappa=0.6*ones(length(kappa),1); end
+    if (ModelOp==10)  kappa=0.5*ones(length(kappa),1); end
     
     
 end
@@ -30,10 +30,10 @@ if (ModelOp==3 ||ModelOp==11||ModelOp==12||ModelOp==13||ModelOp==14||ModelOp==15
     % kernelMatrices={Krr_SN,Kre_SN,Kee_SN};
     if (ModelOp==11)   kappa=ones(length(kappa),1); end
     if (ModelOp==12)   kappa=0.9*ones(length(kappa),1); end
-    if (ModelOp==13)   kappa=0.92*ones(length(kappa),1); end
-    if (ModelOp==14)   kappa=0.94*ones(length(kappa),1); end
-    if (ModelOp==15)   kappa=0.96*ones(length(kappa),1); end
-    if (ModelOp==16)  kappa=0.98*ones(length(kappa),1); end
+    if (ModelOp==13)   kappa=0.8*ones(length(kappa),1); end
+    if (ModelOp==14)   kappa=0.7*ones(length(kappa),1); end
+    if (ModelOp==15)   kappa=0.6*ones(length(kappa),1); end
+    if (ModelOp==16)  kappa=0.5*ones(length(kappa),1); end
 end
 %kernels for SVDD
 %-------------------------------------------
