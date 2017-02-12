@@ -57,6 +57,8 @@ for q = 1:length(mat)
     fclose(fid) ;
 end
 
+%% Remark:
+% the values of kappa can ne changed in the file getModelSetup.m (if options)
 
 
 %%
