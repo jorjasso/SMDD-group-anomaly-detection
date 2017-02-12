@@ -21,7 +21,7 @@ addpath ./utils/
 %%%%%%%%%%%%%%%%%%%%%%%%
 %EXPERIMENT DESCRIPTION
 %%%%%%%%%%%%%%%%%%%%%%%%
-kFold=10;
+kFold=5;
 kernelOp=3
 OpPrint=0
 %%%%%%%%%%%%%%%%%%%%%%%%

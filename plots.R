@@ -31,7 +31,7 @@ data_set_3<-tbl_df(read.csv(path_3,head=FALSE,sep=","))
 
 names(data_set_1)<-c("SMDD.C.k.1", "SMDD", "SMDD.N", "OCSMM", "SVDD", 
                      "SMDD.C.k.9","SMDD.C.k.92","SMDD.C.k.94","SMDD.C.k.96","SMDD.C.k.98",
-                     "SMDD.C.N.k.1","SMDD.C.N.k.9","SMDD.C.N.k.92","SMDD.C.N.k.94","SMDD.CP.N.k.96","SMDD.C.N.k98"
+                     "SMDD.C.k.1.N","SMDD.C.k.9.N","SMDD.C.k.92.N","SMDD.C.k.94.N","SMDD.C.k.96.N","SMDD.C.k.98.N"
                      )
 
 names(data_set_2)<-names(data_set_1)
@@ -40,14 +40,14 @@ names(data_set_3)<-names(data_set_1)
 #data_set_1
 #data_set_2
 df<-data_set_3 %>%
-  dplyr::select(SVDD,OCSMM,SMDD,SMDD.C.k.1,SMDD.N,SMDD.C.N.k.1)
+  dplyr::select(SVDD,OCSMM,SMDD,SMDD.C.k.1,SMDD.N,SMDD.C.k.1.N)
 
 data<-melt(as.data.frame(df))
 
 data<-data %>%
-  mutate(G=ifelse(variable%in% list("SVDD","OCSMM","SMDD","SMDD.C.k.1"),1,0))
+  mutate(G=ifelse(variable%in% list("SVDD","OCSMM","SMDD","SMDD.C.k.1"),"blue","black"))
 
-data %>% ggvis(~factor(variable), ~value,stroke=~G) %>% layer_boxplots() %>%
+data %>% ggvis(~factor(variable), ~value,stroke:=~factor(G)) %>% layer_boxplots() %>%
 scale_numeric("y", domain = c(0.4,1)) %>%
 add_axis("y", 
          title = "AUC",
@@ -59,15 +59,4 @@ add_axis("y",
            subdivide = 0,
            title_offset = 90,
            properties = axis_props(labels = list(fontSize = 15,angle = 45,align = "left", baseline = "middle"),
-                                   title = list(fontSize = 15))) %>%
-  add_legend("stroke", title = "Kernel",
-             properties = legend_props(
-               title = list(fontSize = 16),
-               labels = list(fontSize = 14, dx = 5),
-               symbol = list(stroke = "black", strokeWidth = 2,
-                             shape = "square", size = 200),
-               legend = list(
-                 x = scaled_value("x", 4.5),
-                 y = scaled_value("y", 30)
-               )
-             ))
+                                   title = list(fontSize = 15)))
