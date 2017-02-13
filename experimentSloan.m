@@ -104,7 +104,7 @@ for cv=1:CVP_outer.NumTestSets
         kappa=train{5};
         
         
-       [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,training,test,kappa, bestGamma,kernelOp);
+       [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,train,test,kappa, bestGamma,kernelOp);
         %PREDICT
         %--------
         ypred=prediction_MONQP(kernelMatrices, X, Z,bestC,kappa,kernelOp,ModelOp);
