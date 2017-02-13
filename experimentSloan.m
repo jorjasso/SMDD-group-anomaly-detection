@@ -95,8 +95,15 @@ for cv=1:CVP_outer.NumTestSets
         [bestC,bestGamma, ~]=gridSearch(CVP_inner, training,ModelOp, grid_C, grid_gamma,3); %inner_loop for model selection
        
        
-        %train the classifier with best hyperparameters
+        %train the classifier with best hyperparameters and using only
+        %information of the non-anomalous class
         %-----------------------------------------------
+        
+        index=(yT==1); %training using only informatin of the non-anomalous class
+        train=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)} {training{5}(index)} ];
+        kappa=train{5};
+        
+        
        [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,training,test,kappa, bestGamma,kernelOp);
         %PREDICT
         %--------
