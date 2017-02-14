@@ -1,7 +1,8 @@
 function experimentSloan(option)
 % Experiments for the Sloan sky survey dataset (SDSS)
 %run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
-run   /home/jorjasso/cvx/cvx_startup.m
+%run   /home/jorjasso/cvx/cvx_startup.m
+run /home/posmac/jorjasso/cvx/cvx_startup.m
 addpath ./SVM-KM/
 addpath ./datasets/
 addpath ./experiments/

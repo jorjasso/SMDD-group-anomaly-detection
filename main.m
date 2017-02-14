@@ -66,12 +66,14 @@ end
 % max frequency processors: cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
 Experiments GMM 
 
--tolstoi(3800000),   (9,16)  
--hulk1(2301000),     (1,8)    (2,16)
+-tolstoi(3800000),   (9,16)  10kfold
+-hulk1(2301000),     (1,9)    5 kfold
 -escience4 (4400000) 
--puchkin             (1,2)    (1,10) 
-dostoievski          (1,2)
+-escience1 (3900000) (1,7)    5 kfold
+-puchkin             (1,2)    5 kfold
+dostoievski          (1,1)
      
 Experiments Sloan          9:25         10:23
--dostoievski         (1,3) (1,10) 
--puchkin             (1,3) 
+-dostoievski         (1,2)
+-puchkin             (1,2)
+-escience2 (3900000) (1,12)
