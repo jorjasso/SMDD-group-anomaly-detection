@@ -9,8 +9,8 @@ function experimentsGADGMM(option,percentAnomalies,N)
 %N is the size of the dataset.  (number of groups)
 %
 %percentAnomalies is the percent of anomalies %N
-run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
-%run   /home/jorjasso/cvx/cvx_startup.m
+%run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
+run   /home/jorjasso/cvx/cvx_startup.m
 %run /home/posmac/jorjasso/cvx/cvx_startup.m
 
 addpath ./SVM-KM/
