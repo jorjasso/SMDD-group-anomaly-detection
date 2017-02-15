@@ -10,6 +10,12 @@ grid_AUC=zeros(21,21);
 
 j=1;
 
+%for testing
+%grid_gamma=1
+%grid_C=1
+%kFold=1
+%
+
 for gamma=grid_gamma
     gamma
     i=1;
@@ -23,8 +29,8 @@ for gamma=grid_gamma
             
             %subset of the data to be used for training and validation
             %---------------------------------------------------------
-            trainCV=[{training{1}(indTraining)} {training{2}(indTraining,:)} {training{3}(indTraining)} {training{4}(indTraining)} {training{5}(indTraining)} ];
-            validationCV=[{training{1}(indValidation)} {training{2}(indValidation,:)} {training{3}(indValidation)} {training{4}(indValidation)} {training{5}(indValidation)} ];
+            trainCV=[{training{1}(indTraining)} {training{2}(indTraining,:)} {training{3}(indTraining)} {training{4}(indTraining)} ];
+            validationCV=[{training{1}(indValidation)} {training{2}(indValidation,:)} {training{3}(indValidation)} {training{4}(indValidation)} ];
             
             yT=trainCV{4};
             yV=validationCV{4};
@@ -38,12 +44,11 @@ for gamma=grid_gamma
             %Redefining the training set: Using only the non-anomalous points for training the
             %one-class classifieres
             index=(yT==1);
-            trainCV=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)} {training{5}(index)} ];
-            kappa=trainCV{5};
+            trainCV=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)} ];
             
             %yT contain only points with label = 1
             
-           [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,trainCV,validationCV,kappa, gamma,kernelOp);
+           [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,trainCV,validationCV, gamma,kernelOp);
 
             %predict
             

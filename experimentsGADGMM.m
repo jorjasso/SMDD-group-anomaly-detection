@@ -9,9 +9,9 @@ function experimentsGADGMM(option,percentAnomalies,N)
 %N is the size of the dataset.  (number of groups)
 %
 %percentAnomalies is the percent of anomalies %N
-%run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
+run /Users/jorgeluisguevaradiaz/Documents/GITProjects/cvx/cvx_startup.m
 %run   /home/jorjasso/cvx/cvx_startup.m
-run /home/posmac/jorjasso/cvx/cvx_startup.m
+%run /home/posmac/jorjasso/cvx/cvx_startup.m
 
 addpath ./SVM-KM/
 addpath ./datasets/
@@ -86,7 +86,6 @@ dataset{1}=[tempData{1,1} tempData{2,1}]  %groups
 dataset{2}=[tempData{1,2} ;tempData{2,2}] %means
 dataset{3}=[tempData{1,3} tempData{2,3}]  %coovariance matrices
 dataset{4}=y                              %classes
-dataset{5}=kappa                          %kappa values
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %Nested cross validation
@@ -100,12 +99,11 @@ for cv=1:CVP_outer.NumTestSets
  
     %training and test sets
     index=CVP_outer.training(cv)
-    training=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ]
+    training=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)}  ]
     yT=training{4};
-    kappa=training{5};
     
     index=CVP_outer.test(cv)
-    test=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)} {dataset{5}(index)} ]
+    test=[{dataset{1}(index)} {dataset{2}(index,:)} {dataset{3}(index)} {dataset{4}(index)}]
     
     yTest=test{4};
 
@@ -130,10 +128,8 @@ for cv=1:CVP_outer.NumTestSets
         
         index=(yT==1); %training using only informatin of the non-anomalous class
         train=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)} {training{5}(index)} ];
-        kappa=train{5};
-        
-        
-       [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,train,test,kappa, bestGamma,kernelOp);
+         
+       [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,train,test, bestGamma,kernelOp);
         %PREDICT
         %--------
         ypred=prediction_MONQP(kernelMatrices, X, Z,bestC,kappa,kernelOp,ModelOp);

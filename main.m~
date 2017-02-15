@@ -45,6 +45,7 @@ screen  -d -m matlab -nodisplay -nosplash -r  "experimentSloan(2)"
 screen  -d -m matlab -nodisplay -nosplash -r  "experimentSloan(3)"
 
 %% write results of experiments into a csv files
+mat = dir('output/*.mat')
 
 for q = 1:length(mat) 
     cont = load(strcat('output/',mat(q).name))
@@ -66,14 +67,16 @@ end
 % max frequency processors: cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
 Experiments GMM 
 
--tolstoi(3800000),   (9,16)  10kfold
--hulk1(2301000),     (1,9)    5 kfold
+-tolstoi(3800000),   finished  10kfold
+-hulk1(2301000),     (4,3)    5 kfold
 -escience4 (4400000) 
--escience1 (3900000) (1,7)    5 kfold
--puchkin             (1,2)    5 kfold
-dostoievski          (1,1)
+-escience1 (3900000) (2,10)    5 kfold   (finished)
+-puchkin             (1,11)    5 kfold
+-dostoievski          (1,11)
+-brucutuiv            (1,7)
      
 Experiments Sloan          9:25         10:23
 -dostoievski         (1,2)
 -puchkin             (1,2)
--escience2 (3900000) (1,12)
+-escience2 (3900000) (4,11) (finished)
+-brucutuiv           (1,9)
