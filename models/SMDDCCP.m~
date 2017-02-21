@@ -55,7 +55,7 @@ I2=find(kappa.*alph>=C-th);          % sv errors    kappa.*alph==C
 I1=setdiff(Io,I2);            % sv  0<kappa.*alph<C
 I3=setdiff([1:1:n],Io);
 
-
+kappa
 
 %---Io, index set to compute the center
 %Io=find((kappa.*alph)<=C&(kappa.*alph)>0.000009); % todos los vectores de soporte incluyendo alpha=C

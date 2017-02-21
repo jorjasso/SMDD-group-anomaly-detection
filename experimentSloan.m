@@ -85,7 +85,6 @@ for cv=1:CVP_outer.NumTestSets
     grid_gamma=[1/Q1,1/Q3,1/Q5,1/Q7,1/Q9 ];
     grid_C=[1 1./(NN*[0.1:0.05:0.2])]; %no fraction of oultiers, 10% 15% and 20% of outliers
     
-   % for ModelOp=[1,6:16]
     for ModelOp=[1:16] %for SMDDCCP (1), SMDDDA(2) SMDDDASN(3) OCSMM(4) SVDD(5);SMDDCCP (6-10) with k=0.90, .80 .70, .60, .50; SMDDCPP-SN (k=1,..k=.50)
         [cv ModelOp]
         %model selection with grid search
@@ -97,7 +96,7 @@ for cv=1:CVP_outer.NumTestSets
         %-----------------------------------------------
         
         index=(yT==1); %training using only informatin of the non-anomalous class
-        train=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)} {training{5}(index)} ];
+        train=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)}  ];
         
         
        [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,train,test, bestGamma,kernelOp);

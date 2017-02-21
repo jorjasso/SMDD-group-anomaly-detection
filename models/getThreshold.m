@@ -3,7 +3,6 @@ function th=getThreshold(alph1)
 % 0<alpha<C due to numerical precision by th<alph <C
 %
 th=eps;
-
 % nSV=[];
 % iz=length(alph1);
 % der=0;

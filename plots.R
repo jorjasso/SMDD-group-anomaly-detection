@@ -25,6 +25,8 @@ path_1<-"output/workspaceSloanRandomFirstTypeAnomalies1.mat.csv"
 path_2<-"output/workspaceSloanSecondTypeAnomalies2.mat.csv"
 path_3<-"output/workspaceSloanThirdTypeAnomalies3.mat.csv"
 
+#DATASET GMM
+#-------------
 path_4<-"output/workspacePointBasedGroupAnomalies1.mat.csv"
 path_5<-"output/workspacePointBasedGroupAnomalies2.mat.csv"
 path_6<-"output/workspacePointBasedGroupAnomalies3.mat.csv"
@@ -57,7 +59,9 @@ names(data_set_8)<-names(data_set_1)
 
 #data_set_1
 #data_set_2
-df<-data_set_3 %>%
+#data_set_3
+#etc
+df<-data_set_1 %>%
   dplyr::select(SVDD,OCSMM,SMDD,SMDD.C.k.1,SMDD.N,SMDD.C.k.1.N)
 
 data<-melt(as.data.frame(df))
@@ -66,7 +70,7 @@ data<-data %>%
   mutate(G=ifelse(variable%in% list("SVDD","OCSMM","SMDD","SMDD.C.k.1"),"blue","black"))
 
 data %>% ggvis(~factor(variable), ~value,stroke:=~factor(G)) %>% layer_boxplots() %>%
-scale_numeric("y", domain = c(0.4,1)) %>%
+scale_numeric("y", domain = c(0,1)) %>%
 add_axis("y", 
          title = "AUC",
          title_offset = 50,
@@ -78,21 +82,4 @@ add_axis("y",
            title_offset = 90,
            properties = axis_props(labels = list(fontSize = 15,angle = 45,align = "left", baseline = "middle"),
                                    title = list(fontSize = 15)))
-
-
-#######
-#if we use all the variables
-#######
-df<-data_set_8 %>%
-  dplyr::select(SVDD,OCSMM,SMDD,
-                SMDD.C.k.1, SMDD.C.k.9,SMDD.C.k.92,SMDD.C.k.94,SMDD.C.k.96,SMDD.C.k.98,
-                SMDD.N,
-                SMDD.C.k.1.N,SMDD.C.k.9.N,SMDD.C.k.92.N,SMDD.C.k.94.N,SMDD.C.k.96.N,SMDD.C.k.98.N)
-
-data<-melt(as.data.frame(df))
-
-data<-data %>%
-  mutate(G=ifelse(variable%in% list("SVDD","OCSMM","SMDD","SMDD.C.k.1","SMDD.C.k.9","SMDD.C.k.92","SMDD.C.k.94","SMDD.C.k.96","SMDD.C.k.98"),
-                  "blue",
-                  "black"))
 

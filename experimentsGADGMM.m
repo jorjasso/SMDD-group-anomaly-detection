@@ -127,7 +127,7 @@ for cv=1:CVP_outer.NumTestSets
         %-----------------------------------------------
         
         index=(yT==1); %training using only informatin of the non-anomalous class
-        train=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)} {training{5}(index)} ];
+        train=[{training{1}(index)} {training{2}(index,:)} {training{3}(index)} {training{4}(index)}  ];
          
        [ kernelMatrices,X,Z,kappa] = getModelSetup( ModelOp,train,test, bestGamma,kernelOp);
         %PREDICT
