@@ -7,6 +7,7 @@ Experiments of the paper: Support Measure Data Description, A one-class classifi
 ---
 ## Prerequisites
 * SVM-KM from http://asi.insa-rouen.fr/enseignants/~arakoto/toolbox/  (included)
+* CVX: from http://cvxr.com/cvx/
 * MATLAB 2013a for the experiments
 * R for the plots
 
@@ -15,8 +16,6 @@ Experiments of the paper: Support Measure Data Description, A one-class classifi
 
 Run the Matlab file main.m. That would generate <nowiki>*</nowiki>.mat within the /output folder.
 Alternatively, you can use the screen program in linux as follows:
-
-
 
 ```matlab
 screen  -d -m matlab -nodisplay -nosplash -r  "experimentsGADGMM(1,10,300)"
