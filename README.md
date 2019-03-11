@@ -4,6 +4,14 @@ A one-class classifier for group anomaly detection
 ## Synopsis
 Experiments of the paper: Support Measure Data Description, A one-class classifier for group anomaly detection.
 
+# Citation:
+@INPROCEEDINGS{FuzzSim, 
+author={Guevara, J. and Hirata, R. and Canu, S.}, 
+booktitle={Handbook of Fuzzy Sets Comparison - Theory, Algorithms and Applications}, 
+title={Fuzzy Set Similarity using a Distance-Based Kernel on Fuzzy Sets}, 
+year={2015}
+}
+
 ---
 ## Prerequisites
 * SVM-KM from http://asi.insa-rouen.fr/enseignants/~arakoto/toolbox/  (included)
